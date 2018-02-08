@@ -1,4 +1,4 @@
-# My first contract on Rinkeby using Solidity
+# A Lottery Application on Rinkeby using Solidity
 
 ##  How do I run the project locally with a clean environment?
 ### Download global dependencies:
