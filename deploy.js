@@ -4,10 +4,7 @@ const Web3 = require('web3');
 const {interface, bytecode} = require('./compile');
 const MNEMONIC = process.env.MNEMONIC;
 const INFURA_ADDRESS = process.env.INFURA_ADDRESS;
-const provider = new HDWalletProvider(
-  MNEMONIC,
-  INFURA_ADDRESS
-);
+const provider = new HDWalletProvider(MNEMONIC, INFURA_ADDRESS);
 const web3 = new Web3(provider);
 
 const deploy = async () => {
@@ -18,6 +15,7 @@ const deploy = async () => {
     .deploy({data: bytecode})
     .send({gas: '1000000', from: accounts[0]});
 
+  console.log(interface);
   console.log('Contract deployed to: ', result.options.address);
 };
 
