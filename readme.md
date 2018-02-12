@@ -1,6 +1,6 @@
 # A Lottery Application on Rinkeby using Solidity
 
-## Lottery Contract
+## Lottery Front End
 
 https://github.com/noahschutte/lottery-react
 
