@@ -18,15 +18,10 @@ contract Lottery {
     return uint(keccak256(block.difficulty, now, players));
   }
 
-  function pickWinner() public restricted {
+  function pickWinner() public {
     uint index = random() % players.length;
     players[index].transfer(this.balance);
     players = new address[](0);
-  }
-
-  modifier restricted() {
-    require(msg.sender == manager);
-    _;
   }
 
   function getPlayers() public view returns (address[]) {

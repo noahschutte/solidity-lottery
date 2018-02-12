@@ -14,7 +14,7 @@ beforeEach(async () => {
   lottery = await new web3.eth.Contract(JSON.parse(interface))
     .deploy({data: bytecode})
     .send({from: accounts[0], gas: '1000000'});
-    lottery.setProvider(provider);
+  lottery.setProvider(provider);
 });
 
 describe('Lottery Contract', () => {
@@ -70,16 +70,17 @@ describe('Lottery Contract', () => {
     }
   });
 
-  it('only manager can call pickWinner', async () => {
-    try {
-      await lotter.methods.pickWinner().send({
-        from: accounts[1],
-      });
-      assert(false);
-    } catch (err) {
-      assert(err);
-    }
-  });
+  // Disable in order to allow all users to select a winner
+  // it('only manager can call pickWinner', async () => {
+  //   try {
+  //     await lotter.methods.pickWinner().send({
+  //       from: accounts[1],
+  //     });
+  //     assert(false);
+  //   } catch (err) {
+  //     assert(err);
+  //   }
+  // });
 
   it('sends money to the winner and resets the players array', async () => {
     await lottery.methods.enter().send({
